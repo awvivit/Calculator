@@ -1,0 +1,88 @@
+#calculator { 
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 200px; 
+    height: 300px; 
+    border: 5px double black;
+    box-shadow: 5px 5px 5px gray; 
+    flex-grow: 1; 
+    flex-shrink: 1; 
+}
+
+#screen_container { 
+    display: flex; 
+    width: 100%;  
+    height: 50px; 
+    flex-direction: column;
+    border: 1px solid black;
+    flex-grow: 1; 
+}
+
+#screen { 
+    display: flex; 
+    justify-content: flex-end;
+    width: auto;
+    height: 50px;
+    border: 1px solid black; 
+    text-align: right;
+    padding-right: .2em; 
+    flex-shrink: 0; 
+    flex-grow: 1; 
+    font-size: 2em;
+    font-family: 'Courier New', Courier, monospace; 
+    font-weight: 200; 
+
+}
+
+#error { 
+    width: 100%; 
+    height: 20px; 
+    text-align: right; 
+    color: red; 
+}
+
+#keypad_container {
+    display: flex;
+    width: 180px; 
+
+}
+
+#num_pad { 
+    display: flex; 
+    justify-content: space-evenly;
+    flex-wrap: wrap; 
+
+    flex-grow: 1; 
+    flex-shrink: 1; 
+}
+
+#control_pad { 
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1; 
+    flex-shrink: 1;
+}
+
+.button { 
+    border: 1px solid black ;
+    width: 30px; 
+    height: 30px;
+    text-align: center; 
+    vertical-align: middle;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.6em; 
+    padding: 2px; 
+    margin: 1px; 
+    flex-grow: 1;
+    flex-shrink: 1;
+    cursor: pointer;  
+}
+
+.button:hover { 
+    background-color: lightgray; 
+}
+
