@@ -45,8 +45,9 @@
 
 #keypad_container {
     display: flex;
-    width: 180px; 
-
+    width: 95%; 
+    flex-shrink: 0; 
+    flex-grow: 1; 
 }
 
 #num_pad { 
@@ -60,7 +61,8 @@
 
 #control_pad { 
     display: flex; 
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     flex-grow: 1; 
     flex-shrink: 1;
