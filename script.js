@@ -121,11 +121,9 @@
                     if (this.arrScreen.length === 1 && this.arrScreen[0]?.initial) {
                         this.removeLast(true); 
                     }
+
+                    this.updateNumeral(value);
                     
-                    
-                        this.updateNumeral(value);
-                    
-                     
                     break; 
 
                 case 'decimal':
@@ -207,13 +205,13 @@
                 return true; 
             }
 
-            if (this.hasOperator(this.arrScreen)) {
+            if (this.hasOperator(this.arrScreen) && this.arrScreen[this.arrScreen.length-1]?.type === 'operator') {
+                this.arrScreen.pop();
+                this.updateScreenFromArr(this.arrScreen);  
+            } else if (this.hasOperator(this.arrScreen)) {
                 this.equals();
             }
 
-            if (this.hasOperator(this.arrScreen) && this.arrScreen[this.arrScreen.length-1]?.type === 'operator') {
-                this.arrScreen.pop(); 
-            }
 
             this.arrScreen.push(operator);
             this.screen += ` ${operator.display}`;
