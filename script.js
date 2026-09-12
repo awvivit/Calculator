@@ -40,7 +40,7 @@
                     console.log(`keyboard operation: ${e.key}`);
                     
                     if (this.operators[e.key]) {
-                        document.querySelectorAll('[data-button="' + this.operators[e.key] + '"]')[0].classList.add('fakehover');
+                        document.querySelectorAll('[data-button="' + this.operators[e.key].display.trim() + '"]')[0].classList.add('fakehover');
                         this.updateScreen(this.operators[e.key]);
                     } else if(e.key === '.') { 
                         document.querySelectorAll('[data-button="."]')[0].classList.add('fakehover');
@@ -57,7 +57,7 @@
 
                 handleKeyboardUp: (function(e) {
                     if (this.operators[e.key]) {
-                        document.querySelectorAll('[data-button="' + this.operators[e.key] + '"]')[0].classList.remove('fakehover');
+                        document.querySelectorAll('[data-button="' + this.operators[e.key].display.trim() + '"]')[0].classList.remove('fakehover');
                         
                     } else if(e.key === '.') { 
                         document.querySelectorAll('[data-button="."]')[0].classList.remove('fakehover');
