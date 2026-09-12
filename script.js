@@ -33,6 +33,18 @@
 
                     return false; 
                 }).bind(this), 
+
+                handleKeyboardDown: (function(e) {
+                        if (this.operators[e.key]) {
+                            this.updateScreen(this.operators[e.key]);
+                        } else if(e.key === '.') { 
+                            this.updateScreen({type: 'decimal', display: '.'});
+                        } else if (e.key === 'Backspace') {
+                            this.updateScreen({type: 'clear', display: ''});
+                        } else if (!isNaN(parseInt(e.key))) {
+                            this.updateScreen({type: 'numeral', display: e.key});
+                        }
+                }).bind(this), 
                 ...options
             };
 
@@ -44,7 +56,8 @@
 
 
             this.controlPad.addEventListener('click', this.options?.handleControlPad);
-            this.numPad.addEventListener('click', this.options?.handleNumPad); 
+            this.numPad.addEventListener('click', this.options?.handleNumPad);
+            document.addEventListener('keydown', his.options?.handleKeyboardDown);  
             this.resetAll(); 
             
         }
