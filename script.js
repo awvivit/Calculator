@@ -46,7 +46,7 @@
                         document.querySelectorAll('[data-button="."]')[0].classList.add('fakehover');
                         this.updateScreen({type: 'decimal', display: '.'});
                     } else if (e.key === 'Backspace') {
-                        document.querySelectorAll('[data-button="' + e.key + '"]')[0].classList.add('fakehover');
+                        document.querySelectorAll('[data-button="clear"]')[0].classList.add('fakehover');
                         this.updateScreen({type: 'clear', display: ''});
                     } else if (!isNaN(parseInt(e.key))) {
                         document.querySelectorAll('[data-button="' + e.key + '"]')[0].classList.add('fakehover');
@@ -62,7 +62,7 @@
                     } else if(e.key === '.') { 
                         document.querySelectorAll('[data-button="."]')[0].classList.remove('fakehover');
                     } else if (e.key === 'Backspace') {
-                        document.querySelectorAll('[data-button="' + e.key + '"]')[0].classList.remove('fakehover');
+                        document.querySelectorAll('[data-button="clear"]')[0].classList.remove('fakehover');
                     } else if (!isNaN(parseInt(e.key))) {
                         document.querySelectorAll('[data-button="' + e.key + '"]')[0].classList.remove('fakehover');
                     }
