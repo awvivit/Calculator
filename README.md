@@ -1,6 +1,7 @@
 # Calculator
 Odin Project Calculator
 
+This calculator is designed to conform to the following spec from the Odin project. 
 
 Here are some use cases (expectations about your project):
 
