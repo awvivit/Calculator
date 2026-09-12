@@ -69,6 +69,7 @@
     justify-content: space-evenly;
     flex-grow: 1; 
     flex-shrink: 1;
+    
 }
 
 .button { 
@@ -86,6 +87,14 @@
     flex-shrink: 1;
     cursor: pointer;  
     border-radius: .3em; 
+}
+
+[data-type="operator"], [data-type="allclear"],[data-type="clear"] { 
+    background-color: goldenrod;
+}
+
+[data-type="numeral"] { 
+    font-weight: bold; 
 }
 
 .button:hover, .fakehover { 
