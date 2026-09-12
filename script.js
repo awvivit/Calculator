@@ -5,11 +5,12 @@
             this.screen = ''; 
             this.arrScreen = [];
             this.operators = {
-                '+': {type: 'operator', display: '+', do: this.add.bind(this)}, 
-                '-': {type: 'operator', display: '-', do: this.subtract.bind(this)}, 
-                '*': {type: 'operator', display: '*', do: this.multiply.bind(this)}, 
-                '/': {type: 'operator', display: '/', do: this.divide.bind(this)},
-                '=': {type: 'operator', display: '=', do: this.equals.bind(this)}
+                '+': {type: 'operator', display: '+ ', do: this.add.bind(this)}, 
+                '-': {type: 'operator', display: '- ', do: this.subtract.bind(this)}, 
+                '*': {type: 'operator', display: '* ', do: this.multiply.bind(this)}, 
+                '/': {type: 'operator', display: '/ ', do: this.divide.bind(this)},
+                '=': {type: 'operator', display: '=', do: this.equals.bind(this)}, 
+                'Enter': {type: 'operator', display: '=', do: this.equals.bind(this)}, 
             };
 
             this.options = {
@@ -35,16 +36,39 @@
                 }).bind(this), 
 
                 handleKeyboardDown: (function(e) {
-                        if (this.operators[e.key]) {
-                            this.updateScreen(this.operators[e.key]);
-                        } else if(e.key === '.') { 
-                            this.updateScreen({type: 'decimal', display: '.'});
-                        } else if (e.key === 'Backspace') {
-                            this.updateScreen({type: 'clear', display: ''});
-                        } else if (!isNaN(parseInt(e.key))) {
-                            this.updateScreen({type: 'numeral', display: e.key});
-                        }
+
+                    console.log(`keyboard operation: ${e.key}`);
+                    
+                    if (this.operators[e.key]) {
+                        document.querySelectorAll('[data-button="' + this.operators[e.key] + '"]')[0].classList.add('fakehover');
+                        this.updateScreen(this.operators[e.key]);
+                    } else if(e.key === '.') { 
+                        document.querySelectorAll('[data-button="."]')[0].classList.add('fakehover');
+                        this.updateScreen({type: 'decimal', display: '.'});
+                    } else if (e.key === 'Backspace') {
+                        document.querySelectorAll('[data-button="' + e.key + '"]')[0].classList.add('fakehover');
+                        this.updateScreen({type: 'clear', display: ''});
+                    } else if (!isNaN(parseInt(e.key))) {
+                        document.querySelectorAll('[data-button="' + e.key + '"]')[0].classList.add('fakehover');
+                        this.updateScreen({type: 'numeral', display: e.key});
+                    }
+
                 }).bind(this), 
+
+                handleKeyboardUp: (function(e) {
+                    if (this.operators[e.key]) {
+                        document.querySelectorAll('[data-button="' + this.operators[e.key] + '"]')[0].classList.remove('fakehover');
+                        
+                    } else if(e.key === '.') { 
+                        document.querySelectorAll('[data-button="."]')[0].classList.remove('fakehover');
+                    } else if (e.key === 'Backspace') {
+                        document.querySelectorAll('[data-button="' + e.key + '"]')[0].classList.remove('fakehover');
+                    } else if (!isNaN(parseInt(e.key))) {
+                        document.querySelectorAll('[data-button="' + e.key + '"]')[0].classList.remove('fakehover');
+                    }
+                    console.log('keyboard up!');
+
+                }).bind(this),
                 ...options
             };
 
@@ -57,7 +81,9 @@
 
             this.controlPad.addEventListener('click', this.options?.handleControlPad);
             this.numPad.addEventListener('click', this.options?.handleNumPad);
-            document.addEventListener('keydown', his.options?.handleKeyboardDown);  
+            window.addEventListener('keydown', this.options?.handleKeyboardDown);  
+            window.addEventListener('keyup', this.options?.handleKeyboardUp);  
+
             this.resetAll(); 
             
         }
